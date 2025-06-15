@@ -98,31 +98,31 @@ Crear un segundo Dockerfile para servir el frontend con Nginx.
 Contenerizar el backend con un Dockerfile.
 
 ---
-![image](https://github.com/user-attachments/assets/85117826-0531-42d9-89d1-b55e5dccf869)
+![image](https://github.com/user-attachments/assets/ba5042da-ea84-4219-99c6-91ccb37a7aef)
 
 Desplegar todos los servicios (frontend, backend, base de datos y pgAdmin) con docker-compose.
 
 ---
-![image](https://github.com/user-attachments/assets/79969eb3-0976-4c51-8260-c3fd3cc9bc9c)
+![image](https://github.com/user-attachments/assets/5ae37d46-9c6b-47c1-8d3d-418d5ac47776)
 ---
-![image](https://github.com/user-attachments/assets/cb8e17f4-ea45-4b07-b67c-0d4d5b250a75)
+![image](https://github.com/user-attachments/assets/e3038f82-e61c-4ecc-9bc7-f320d8346223)
 ---
-![image](https://github.com/user-attachments/assets/e82668bd-2463-40a5-a6f7-1b8fe1e0db31)
+![image](https://github.com/user-attachments/assets/66386e99-5ca1-48d8-945b-998d49ca70a2)
 ---
 Validar localhost 
 
 ---
-![image](https://github.com/user-attachments/assets/2d36a6ce-9d19-4bfe-9173-489d72ca4c3b)
+![image](https://github.com/user-attachments/assets/ca9557a4-c7f3-449e-9c51-6075ae01579e)
 
 Ingreso a Deploy
 
 ----
-![image](https://github.com/user-attachments/assets/2a33dbb5-b9b3-4b2d-a726-5df644dcdfe5)
+![image](https://github.com/user-attachments/assets/ac9a9284-5937-421d-8d08-2f148404b5b3)
 
 Validar contendor Nginx
 
 ---
-![image](https://github.com/user-attachments/assets/894bf745-3e83-4ed4-8989-e55a777ba05b)
+![image](https://github.com/user-attachments/assets/d492a812-6804-42ab-95d8-37328f137b24)
 
 Validar interior del contenedor nginx
 
