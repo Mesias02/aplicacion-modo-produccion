@@ -46,15 +46,25 @@ Bases de datos relacionales con PostgreSQL.
 Configuración básica de Nginx.
 
 ## 5. Objetivos a alcanzar
-Crear un Dockerfile para la etapa de construcción del frontend usando Node.js.
+Crear un Dockerfile para la etapa de construcción del frontend utilizando una imagen base de Node.js, que permita compilar y generar los archivos estáticos de producción de la aplicación React.
 
-Crear un segundo Dockerfile para servir el frontend con Nginx.
+Crear un segundo Dockerfile para servir el frontend con Nginx, copiando los archivos generados desde la etapa de construcción y configurando Nginx para exponer la aplicación en un entorno de producción.
 
-Contenerizar el backend con un Dockerfile.
+Contenerizar la aplicación backend desarrollada en Spring Boot, mediante un Dockerfile que aplique la técnica de multi-stage build, asegurando una imagen liviana y optimizada para su ejecución en contenedores.
 
-Desplegar todos los servicios (frontend, backend, base de datos y pgAdmin) con docker-compose.
+Desplegar todos los servicios necesarios para la aplicación (frontend, backend, base de datos PostgreSQL y cliente pgAdmin) integrándolos mediante un archivo docker-compose.yml, que facilite el levantamiento, configuración y conexión entre los contenedores.
 
-Validar el correcto funcionamiento entre todos los contenedores.
+Validar el correcto funcionamiento de todos los servicios, comprobando que:
+
+El backend se comunica con la base de datos PostgreSQL.
+
+El frontend se muestra correctamente al acceder desde el navegador.
+
+pgAdmin permite conectarse al servicio de base de datos.
+
+Todos los servicios se ejecutan correctamente en segundo plano usando Docker Compose.
+
+
 
 ## 6. Equipo necesario
 Computador con Docker y Docker Compose instalados.
@@ -75,98 +85,49 @@ Videos tutoriales recomendados.
 Repositorio del proyecto.
 
 ## 8. Procedimiento
-Pasos
-Crear archivo .env para configuración de variables del backend.
+Crear un Dockerfile para la etapa de construcción del frontend usando Node.js.
 
-Crear Dockerfile para construir el frontend:
+---
+![image](https://github.com/user-attachments/assets/61b3747d-d50e-468e-b70b-120495f3cbb0)
 
-Dockerfile
-Copiar
-Editar
-# Etapa 1 - Build
-FROM node:18 as builder
-WORKDIR /app
-COPY . .
-RUN npm install
-RUN npm run build
-Crear Dockerfile para servir el frontend con Nginx:
+Crear un segundo Dockerfile para servir el frontend con Nginx.
 
-Dockerfile
-Copiar
-Editar
-# Etapa 2 - Producción
-FROM nginx:alpine
-COPY --from=builder /app/dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-Crear Dockerfile para backend con multi-stage:
+---
+![image](https://github.com/user-attachments/assets/5ae9c2ec-8503-4dba-b578-0b0699969c18)
 
-Dockerfile
-Copiar
-Editar
-FROM eclipse-temurin:17-jdk AS build
-WORKDIR /app
-COPY . .
-RUN ./mvnw package -DskipTests
+Contenerizar el backend con un Dockerfile.
 
-FROM eclipse-temurin:17-jdk
-WORKDIR /app
-COPY --from=build /app/target/app.jar app.jar
-ENTRYPOINT ["java", "-jar", "app.jar"]
-Crear archivo docker-compose.yml con servicios:
+---
+![image](https://github.com/user-attachments/assets/85117826-0531-42d9-89d1-b55e5dccf869)
 
-yaml
-Copiar
-Editar
-version: '3.8'
-services:
-  frontend:
-    build:
-      context: ./frontend
-    ports:
-      - "80:80"
-    depends_on:
-      - backend
+Desplegar todos los servicios (frontend, backend, base de datos y pgAdmin) con docker-compose.
 
-  backend:
-    build:
-      context: ./backend
-    ports:
-      - "8080:8080"
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/mydb
-    depends_on:
-      - db
+---
+![image](https://github.com/user-attachments/assets/79969eb3-0976-4c51-8260-c3fd3cc9bc9c)
+---
+![image](https://github.com/user-attachments/assets/cb8e17f4-ea45-4b07-b67c-0d4d5b250a75)
+---
+![image](https://github.com/user-attachments/assets/e82668bd-2463-40a5-a6f7-1b8fe1e0db31)
+---
+Validar localhost 
 
-  db:
-    image: postgres:15
-    environment:
-      POSTGRES_DB: mydb
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: pass
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+---
+![image](https://github.com/user-attachments/assets/2d36a6ce-9d19-4bfe-9173-489d72ca4c3b)
 
-  pgadmin:
-    image: dpage/pgadmin4
-    ports:
-      - "5050:80"
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: admin
-    depends_on:
-      - db
+Ingreso a Deploy
 
-volumes:
-  postgres_data:
-Ejecutar los servicios:
+----
+![image](https://github.com/user-attachments/assets/2a33dbb5-b9b3-4b2d-a726-5df644dcdfe5)
 
-bash
-Copiar
-Editar
-docker-compose up --build -d
-Verificar conexión del backend a PostgreSQL y acceso desde pgAdmin.
+Validar contendor Nginx
 
-Validar el despliegue en producción accediendo a http://localhost.
+---
+![image](https://github.com/user-attachments/assets/894bf745-3e83-4ed4-8989-e55a777ba05b)
+
+Validar interior del contenedor nginx
+
+---
+![image](https://github.com/user-attachments/assets/7e417ba5-faca-4357-a9f6-47bae3ccc00a)
 
 ## 9. Resultados esperados
 Se logró contenerizar el frontend, backend y la base de datos exitosamente. La aplicación fue desplegada en producción con Nginx, mostrando correctamente la interfaz de usuario. El backend se conectó con PostgreSQL y ejecutó migraciones con Flyway. Desde pgAdmin se confirmó el acceso a la base de datos.
