@@ -127,7 +127,8 @@ Validar contendor Nginx
 Validar interior del contenedor nginx
 
 ---
-![image](https://github.com/user-attachments/assets/7e417ba5-faca-4357-a9f6-47bae3ccc00a)
+![image](https://github.com/user-attachments/assets/b6d04a6a-d615-4802-8b06-6848bc018234)
+
 
 ## 9. Resultados esperados
 Se logró contenerizar el frontend, backend y la base de datos exitosamente. La aplicación fue desplegada en producción con Nginx, mostrando correctamente la interfaz de usuario. El backend se conectó con PostgreSQL y ejecutó migraciones con Flyway. Desde pgAdmin se confirmó el acceso a la base de datos.
