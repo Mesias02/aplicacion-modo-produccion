@@ -63,8 +63,6 @@ Acceso a internet.
 
 Navegador web.
 
-Repositorio del proyecto (frontend y backend).
-
 ## 7. Material de apoyo
 Documentación oficial de Docker y Nginx.
 
@@ -78,10 +76,6 @@ Repositorio del proyecto.
 
 ## 8. Procedimiento
 Pasos
-Clonar el proyecto frontend y backend desde GitHub.
-
-git clone https://github.com/usuario/proyecto
-
 Crear archivo .env para configuración de variables del backend.
 
 Crear Dockerfile para construir el frontend:
