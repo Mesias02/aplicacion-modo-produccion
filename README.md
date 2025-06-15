@@ -12,7 +12,9 @@ Para contenerizar aplicaciones modernas, es recomendable dividir la creación de
 ![image](https://github.com/user-attachments/assets/aef823ea-52c0-4b1a-a284-0a98de6ec8f3)
 ----
 El archivo Dockerfile para el proceso de build usa una imagen de Node.js. Este archivo contiene instrucciones para instalar dependencias y generar el build de producción. Posteriormente, en otro Dockerfile, Nginx se encarga de servir los archivos estáticos construidos. Esta práctica permite imágenes más livianas y seguras (Docker Docs, n.d.).
-
+----
+![image](https://github.com/user-attachments/assets/7bce483d-2476-4055-84df-122b10c3ef67)
+----
 Además, se aplicó la técnica de multi-stage build, que permite ejecutar cada etapa en entornos separados, optimizando el tamaño final de la imagen al copiar sólo los archivos necesarios a la imagen de producción (IONOS, n.d.).
 
 Docker Compose
